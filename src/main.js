@@ -1,15 +1,29 @@
 import React, { Component } from 'react'
 import {render} from 'react-dom'
-class Hello extends Component {
+import {Provider} from 'react-redux'
+import {BrowserRouter, Route, browserHistory} from 'react-router-dom'
+import store from './store'
+import Home from './scenes/Home'
+import MainPanel from './scenes/MainPanel'
+import './css/semantic.css'
+const mainStore = store()
+class App extends Component {
 
   render () {
     return (
-      <div>Hello world</div>
+      <Provider store={mainStore}>
+        <BrowserRouter history={browserHistory}>
+          <div>
+            <Route path='/' exact component={Home} />
+            <Route path='/main' component={MainPanel} />
+          </div>
+        </BrowserRouter>
+      </Provider>
     )
   }
 
 }
 render(
-  <Hello />,
+  <App />,
   document.getElementById('app')
 )

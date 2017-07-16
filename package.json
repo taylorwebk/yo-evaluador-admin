@@ -15,7 +15,6 @@
     "start": "webpack-dev-server --progress --colors --hot --config ./webpack.config.js",
     "build": "webpack --progress --colors --optimize-minimize --define process.env.NODE_ENV='production' -p --config ./webpack.config.prod.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/taylorwebk/yo-evaluador-admin.git"
@@ -46,6 +45,7 @@
     "animated": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-motion": "^0.5.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-transition-group": "^2.0.2",
