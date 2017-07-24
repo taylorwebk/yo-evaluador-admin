@@ -6,7 +6,6 @@ import store from './store'
 import Home from './scenes/Home'
 import MainPanel from './scenes/MainPanel'
 import './css/semantic.css'
-
 const mainStore = store()
 class App extends Component {
 

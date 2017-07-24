@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Container, Header, Icon, Button, Input, Dimmer} from 'semantic-ui-react'
-import {Redirect, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import C from './../../../components/Colors'
 import ClickEffect from './../../../components/Animations/ClickEffect'
 class Body extends Component {
