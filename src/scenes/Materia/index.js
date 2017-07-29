@@ -3,23 +3,27 @@ import {connect} from 'react-redux'
 import {getSubjects, submitSubject} from './../Materia/redux/actions'
 import Loading from './../../components/Loading'
 import FormSubmit from './components/FormSubmit'
+import SubjectCards from './components/SubjectCards'
 class Materia extends Component {
   componentDidMount () {
     this.props.getSubjects()
   }
   render () {
-    let {erro, list, responseSubmit, submiting} = this.props.subject
-    let {submitSubject} = this.props
+    let {error, list, submiting} = this.props.subject
+    let {submitSubject, teachers} = this.props
     if (submiting) {
       return <Loading m='Cargando Materias' />
     }
-    console.log(this.props)
     return (
       <div>
         <FormSubmit
+          error={error}
           submitSubject={submitSubject}
         />
-        hola materai
+        <SubjectCards
+          list={list}
+          teachers={teachers}
+        />
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Container, Form, Grid, Button} from 'semantic-ui-react'
+import {Container, Form, Grid, Button, Message} from 'semantic-ui-react'
 class FormSubmit extends Component {
   constructor (args) {
     super(args)
@@ -19,12 +19,21 @@ class FormSubmit extends Component {
     this.props.submitSubject(this.state)
   }
   render () {
+    const {error} = this.props
     const {des, sigla} = this.state
+    let m = null
+    if (error) {
+      m = <Message negative>
+        <Message.Header>Algo salió mal :(</Message.Header>
+        <p>Hubo un error al registrar la materia, intenta de nuevo por favor.</p>
+      </Message>
+    }
     return (
       <Container textAlign='left'>
         <Grid stackable container columns={1}>
           <Grid.Row>
             <Grid.Column stretched>
+              {m}
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
                   <Form.Input

@@ -19,6 +19,17 @@ let submitSubjectSuccess = (data) => ({
   type: A.SUBMIT_SUBJECT_SUCCESS,
   data
 })
+let submitClassBegin = () => ({
+  type: A.SUBMIT_CLASS_BEGIN
+})
+let submitClassSuccess = (data) => ({
+  type: A.SUBMIT_CLASS_SUCCESS,
+  data
+})
+let submitClassError = (data) => ({
+  type: A.SUBMIT_CLASS_ERROR,
+  data
+})
 export const getSubjects = () => dispatch => {
   dispatch(requestSubjects())
   GET.subjects().then(
@@ -32,4 +43,12 @@ export const submitSubject = (data) => dispatch => {
     ? dispatch(submitSubjectSuccess(res.content))
     : dispatch(submitSubjectError(res.content))
   ).catch((e) => dispatch(submitSubjectError(e.message)))
+}
+export const submitClass = (data) => dispatch => {
+  dispatch(submitClassBegin())
+  POST.class(data).then(
+    res => res.status === 'success'
+    ? dispatch(submitClassSuccess(res.content))
+    : dispatch(submitClassError(res.content))
+  ).catch(e => dispatch(submitClassError(e.message)))
 }

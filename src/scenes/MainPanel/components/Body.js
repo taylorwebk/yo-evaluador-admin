@@ -6,16 +6,17 @@ import Fade from './../../../components/Animations/Fade'
 import Materia from './../../Materia'
 import Docente from './../../Docente'
 import Estudiante from './../../Estudiante'
+import Clase from './../../Clase'
 class Body extends Component {
 
   render () {
     const {url} = this.props
-    const {matters, students, teachers} = this.props.data.content
+    const {students, teachers} = this.props.data.content
     return (
       <Container textAlign='center'>
         <Route path={`${url}/materia`} render={props => (
           <Fade>
-            <Materia matters={matters} {...props} />
+            <Materia teachers={teachers} {...props} />
           </Fade>
         )} />
         <Route path={`${url}/docente`} render={props => (
@@ -26,6 +27,11 @@ class Body extends Component {
         <Route path={`${url}/estudiante`} render={props => (
           <Fade>
             <Estudiante students={students} {...props} />
+          </Fade>
+        )} />
+        <Route path={`${url}/clase/:id`} render={props => (
+          <Fade>
+            <Clase students={students} {...props} />
           </Fade>
         )} />
         <Route exact path={`${url}`} render={() => (

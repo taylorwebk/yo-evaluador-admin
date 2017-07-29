@@ -10,20 +10,25 @@ function config (data) {
     body: JSON.stringify(data)
   }
 }
+const url = (str) => `http://${IP}/yo-evaluador-api/${str}`
 let POST = {
   students (data) {
-    return fetch(`http://${IP}/yo-evaluador-api/estudiante`,
+    return fetch(url('estudiante'),
     config(data))
     .then((res) => {
       return res.json()
     })
   },
   teachers (data) {
-    return fetch(`http://${IP}/yo-evaluador-api/docente`,
+    return fetch(url('docente'),
       config(data)).then((res) => res.json())
   },
   subject (data) {
-    return fetch(`http://${IP}/yo-evaluador-api/materia`,
+    return fetch(url('materia'),
+      config(data)).then(res => res.json())
+  },
+  class (data) {
+    return fetch(url('clase'),
       config(data)).then(res => res.json())
   }
 }
